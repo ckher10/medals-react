@@ -1,20 +1,19 @@
-import { useState } from 'react'
-import './Country.css'
+import { useState } from "react";
+import "./Country.css";
 
-function Country() {
-  const [name, setName] = useState("United States")
-  const [goldMedalCount, setGoldMedalCount] = useState(5)
+function Country({ country: { id, name, gold }, removeCountry }) {
 
   return (
     <>
-      <h1>{name}</h1>
-      <div className='row'>
-        <h2>Gold Medals: {goldMedalCount}</h2>
-        <button onClick={() =>setGoldMedalCount(goldMedalCount + 1)}>+</button>
+      <div className="card" style={{width: '18rem'}}>
+        <div className="card-body">
+          <h5 className="card-title">{name}</h5>
+          <p>Gold Medals: {gold}</p>
+          <button onClick={() => removeCountry(id)}>Delete</button>
+        </div>
       </div>
-
     </>
-  )
+  );
 }
 
-export default Country
+export default Country;
